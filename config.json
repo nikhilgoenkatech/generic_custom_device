@@ -1,0 +1,51 @@
+{
+  "tenant-details":
+   {
+     "tenant-URL"  : "https://vvl663.managed-sprint.dynalabs.io/e/e6ac6c11-917a-46fa-9da3-55a7265f572f/api/v1/",
+     "HTTP-GET-token" : "GET_TOKEN",
+     "DT-POST-token"  : "POST_TOKEN"
+   },
+   "custom-device-details":
+   [
+     {
+       "device-name":"MYDEVICE",
+       "device-id":"80",
+       "device-property":
+       {
+	 "properties":"Property1",
+	 "ipAddresses": [ 
+	   "2.3.4.5",
+	   "2.3.4.9"
+	 ],
+	 "type":"HTTP test",
+	 "favicon":"https://www.freefavicon.com/freefavicons/software/blue-database-152-190594.png",
+	 "configURL":"https://www.cricbuzz.com",
+	 "listenPorts": [ 
+	   "235"
+	  ],
+	 "tags": [
+	   "EC2", 
+	   "ANZtest"
+	 ]
+       },
+       "metrics-details":
+       [
+         {
+            "http-endpoint"  : "select count(distinct(internalUserId)), count(distinct(appVersion)) from usersession where applicationType=\"MOBILE_APPLICATION\"",
+            "metric-displayname":"Total UserIDs,Total Version",
+            "metric-dbname":"custom:bookJourney1,custom:bookJourney2",
+	    "unit":"Count,PerMinute"
+         },
+         {
+            "http-endpoint"  : "select count(distinct(userId)) from usersession where applicationType=\"MOBILE_APPLICATION\" and userID IS not NULL AND useraction.name IN ('bookJourney')",
+            "metric-displayname":"Total number of userID completed bookJourney",
+            "metric-dbname":"custom:users.bookJourney",
+	    "unit":"BytePerMinute"
+	 }
+	 
+       ]
+    }
+  ],
+  "sleep":"20",
+  "log_file": "custom_device_endpoint.log"
+}

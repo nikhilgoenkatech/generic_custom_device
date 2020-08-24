@@ -1,0 +1,59 @@
+{
+  "tenant-details":
+   {
+     "tenant-URL"  : "TENANT_URL/api/v1/",
+     "API-GET-token"   : "GET_TOKEN",
+     "API-POST-token"  : "POST_TOKEN"
+   },
+   "application-name":
+   [
+     {
+       "app-name":"SIA",
+       "use-case":
+       [
+         {
+            "api"  : "select count(distinct(internalUserId)) from usersession where applicationType=\"MOBILE_APPLICATION\" and userID IS NULL AND useraction.name IN ('bookJourney')",
+            "displayname":"Total number of internalUserId completed bookJourney",
+            "timeseriesId":"custom:internalId.JourneyBook"
+         },
+         {
+            "api"  : "select count(distinct(internalUserId)) from usersession where applicationType=\"MOBILE_APPLICATION\" and userID IS NULL",
+            "displayname":"Total number of internalUserId",
+            "timeseriesId":"custom:internalId"
+         },
+         {
+            "api"  : "select count(distinct(userId)) from usersession where applicationType=\"MOBILE_APPLICATION\" and userID IS NOT NULL",
+            "displayname":"Total number of userId",
+            "timeseriesId":"custom:totalusers"
+         },
+         {
+            "api"  : "select count(distinct(userId)) from usersession where applicationType=\"MOBILE_APPLICATION\" and userID IS not NULL AND useraction.name IN ('bookJourney')",
+            "displayname":"Total number of userId completed bookJourney",
+            "timeseriesId":"custom:userId.bookJourney"
+         },
+         {
+            "api"  : "select count(distinct(userId)) from usersession where applicationType=\"MOBILE_APPLICATION\" AND appVersion=\"1.3.2\"",
+            "displayname":"Total number of version",
+            "timeseriesId":"custom:userId.version"
+         },
+         {
+            "api"  : "select count(distinct(userId)) from usersession where applicationType=\"MOBILE_APPLICATION\" AND osFamily=\"Android\"",
+            "displayname":"Total number of Android",
+            "timeseriesId":"custom:androidUsers"
+         }
+       ]
+    },
+    {
+      "app-name":"SIA-2",
+      "use-case":
+    [
+      {
+        "api"  : "select count(distinct(internalUserId)) from usersession where applicationType=\"MOBILE_APPLICATION\" and userID IS NULL AND useraction.name IN ('bookJourney')",
+        "displayname":"Total number of internalUserId completed bookJourney",
+        "timeseriesId":"custom:internalId.JourneyBook"
+     }
+   ]
+   }
+  ],
+  "log_file": "usql_restore_dynatrace.log"
+}
